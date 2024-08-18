@@ -1,0 +1,2 @@
+cd mysite  # プロジェクトディレクトリに移動
+echo "SpeechRecognition" >> requirements.txt  # requirements.txtに追加
