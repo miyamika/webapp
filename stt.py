@@ -1,3 +1,14 @@
+
+import sys
+
+# sys.path の内容を確認する
+print("Current Python Path (sys.path):")
+for path in sys.path:
+    print(path)
+
+
+
+
 import streamlit as st # フロントエンドを扱うstreamlitの機能をインポート
 import speech_recognition as sr # 音声認識の機能をインポート
 
