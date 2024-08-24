@@ -4,3 +4,4 @@ streamlit
 speechrecognition
 pyocr
 openai
+googlemaps
