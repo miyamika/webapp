@@ -6,7 +6,7 @@ import requests
 import pandas as pd
 
 # APIキーを設定
-openai.api_key = os.getenv('OPENAI_API_KEY')
+api_key = os.getenv('OPENAI_API_KEY')
 
 gmaps_api_key = 'AIzaSyD1WIanYYwxq1-BZSWa4TMiK5p4GSFl-go'
 hotpepper_api_key = '361a8a7'
