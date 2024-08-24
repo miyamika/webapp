@@ -4,9 +4,10 @@ import os
 import openai
 import requests
 import pandas as pd
+import random
 
 # APIキーを設定
-api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 gmaps_api_key = 'AIzaSyD1WIanYYwxq1-BZSWa4TMiK5p4GSFl-go'
 hotpepper_api_key = '361a8a7'
@@ -68,7 +69,7 @@ def get_restaurants_nearby(lat, lng, radius=5000):  # サウナの近くの半�
 def analyze_mood(prompt):
     try:
         response = openai.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "あなたは日本語で応答するアシスタントです。短く簡潔に答えてください。"},
                 {"role": "user", "content": prompt}
@@ -76,7 +77,7 @@ def analyze_mood(prompt):
             temperature=0.5,  # 応答の一貫性を高めるために低めに設定
             max_tokens=50  # 応答の長さを制限
         )
-        mood = response.choices[0].message.content.strip()
+        mood = response.choices[0].message['content'].strip()
         return mood
     except Exception as e:
         st.error(f"気分解析中にエラーが発生しました: {str(e)}")
@@ -98,7 +99,7 @@ def get_route_directions(start_lat, start_lng, end_lat, end_lng):
 
 # サウナをレコメンドする関数
 def recommend_sauna(saunas, mood):
-    random.seed(mood)
+    random.seed(hash(mood))
     return random.choice(saunas) if saunas else None
 
 # Streamlit UI
