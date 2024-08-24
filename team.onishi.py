@@ -78,7 +78,7 @@ def analyze_mood(prompt):
             max_tokens=50  # 応答の長さを制限
         )
         mood = response.choices[0].message['content'].strip()
-        return mood
+        return mood.strip()
     except Exception as e:
         st.error(f"気分解析中にエラーが発生しました: {str(e)}")
         return None
