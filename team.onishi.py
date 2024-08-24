@@ -7,10 +7,10 @@ import pandas as pd
 
 # APIキーを設定
 api_key = os.getenv('OPENAI_API_KEY')
-client = OpenAI(api_key=api_key)
+client = openai(api_key=api_key)
 
 # openAIの機能をclientに代入
-client = OpenAI()
+client = openai()
 
 gmaps_api_key = 'AIzaSyD1WIanYYwxq1-BZSWa4TMiK5p4GSFl-go'
 hotpepper_api_key = '361a8a7'
