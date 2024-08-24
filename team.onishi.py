@@ -77,7 +77,7 @@ def analyze_mood(prompt):
             temperature=0.5,  # 応答の一貫性を高めるために低めに設定
             max_tokens=50  # 応答の長さを制限
         )
-        mood = response.choices[0].message['content'].strip()
+        mood = response.choices[0].message.content.strip()
         return mood.strip()
     except Exception as e:
         st.error(f"気分解析中にエラーが発生しました: {str(e)}")
