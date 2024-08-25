@@ -9,7 +9,7 @@ import random
 # APIキーを設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-gmaps_api_key = 'AI4GSFl-go'
+gmaps_api_key = os.getenv('GMAPS_API_KEY')
 hotpepper_api_key = '361a8a7'
 gmaps = googlemaps.Client(key=gmaps_api_key)
 
