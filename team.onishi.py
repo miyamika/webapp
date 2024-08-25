@@ -132,18 +132,19 @@ if st.button("サウナとラーメン屋をレコメンド"):
                     if 'rating' in recommended_sauna:
                         st.write(f"評価: {recommended_sauna['rating']}")
 
+                     # サウナまでのルートを表示 
+                    route = get_route_directions(lat, lng, recommended_sauna['geometry']['location']['lat'], recommended_sauna['geometry']['location']['lng'])
+                    if route:
+                        st.write(f"距離: {route['distance']}")
+                        st.write(f"所要時間: {route['duration']}")
+
                     # 地図表示
                     sauna_location = pd.DataFrame({
                         'lat': [recommended_sauna['geometry']['location']['lat']],
                         'lon': [recommended_sauna['geometry']['location']['lng']]
                     })
                     st.map(sauna_location)
-                    # サウナまでのルートを表示 
-                    route = get_route_directions(lat, lng, recommended_sauna['geometry']['location']['lat'], recommended_sauna['geometry']['location']['lng'])
-                    if route:
-                        st.write(f"距離: {route['distance']}")
-                        st.write(f"所要時間: {route['duration']}")
-
+                   
                     
                     # サウナの近くのラーメン屋を検索
                     restaurants = get_restaurants_nearby(
