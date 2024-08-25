@@ -113,7 +113,7 @@ def recommend_sauna(saunas, mood):
 # Streamlit UI
 st.title("ととのい＆すすりナビ")
 
-address = st.text_input("行きたいエリアを入力してください（例: 東京都新宿区）")
+address = st.text_input("整ってすすりたいエリアを入力してください（例: 東京都新宿区）")
 user_input = st.text_input("今日はどんな気分ですか？自由に入力してください。")
 
 if st.button("サウナとラーメン屋をレコメンド"):
