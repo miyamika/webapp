@@ -82,21 +82,29 @@ def analyze_mood(prompt):
     except Exception as e:
         st.error(f"気分解析中にエラーが発生しました: {str(e)}")
         return None
-
-# 乗換案内APIを使って行き方を提案する関数
-def get_route_directions(start_lat, start_lng, end_lat, end_lng):
+        
+# Google Maps Directions APIを使ってサウナまでのルートを取得する関数
+def get_route_directions(start_lat, start_lng, end_lat, end_lng, mode='walking'):
     try:
-        url = f"https://api.norikaeapi.com/v1/route?start={start_lat},{start_lng}&end={end_lat},{end_lng}&key={norikae_api_key}"
-        response = requests.get(url)
-        data = response.json()
-        if data['routes']:
-            return data['routes'][0]['summary']
+        directions_result = gmaps.directions(
+            origin=(start_lat, start_lng),
+            destination=(end_lat, end_lng),
+            mode=mode,
+            language='ja'
+        )
+        if directions_result:
+            route = directions_result[0]['legs'][0]
+            return {
+                'distance': route['distance']['text'],
+                'duration': route['duration']['text'],
+                'steps': route['steps']
+            }
         else:
-            return "経路が見つかりませんでした。"
+            return None
     except Exception as e:
-        st.error(f"経路取得中にエラーが発生しました: {str(e)}")
-        return "経路の取得に失敗しました。"
-
+        st.error(f"ルート取得中にエラーが発生しました: {str(e)}")
+        return None
+        
 # サウナをレコメンドする関数
 def recommend_sauna(saunas, mood):
     random.seed(hash(mood))
