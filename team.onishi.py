@@ -69,7 +69,7 @@ def get_restaurants_nearby(lat, lng, radius=5000):  # サウナの近くの半�
 def analyze_mood(prompt):
     try:
         response = openai.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "あなたは日本語で応答するアシスタントです。短く簡潔に答えてください。"},
                 {"role": "user", "content": prompt}
