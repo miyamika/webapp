@@ -111,7 +111,7 @@ def recommend_sauna(saunas, mood):
     return random.choice(saunas) if saunas else None
 
 # Streamlit UI
-st.title("サウナとラーメン最高じゃね！？")
+st.title("ととのい＆すすりナビ")
 
 address = st.text_input("現在地の住所を入力してください（例: 東京都新宿区西新宿2-8-1）")
 user_input = st.text_input("今日はどんな気分ですか？自由に入力してください。")
