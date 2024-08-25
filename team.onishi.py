@@ -123,11 +123,11 @@ if st.button("サウナとラーメン屋をレコメンド"):
             saunas = get_saunas_nearby(lat, lng)
             mood = analyze_mood(f"今日は{user_input}気分です。おすすめのサウナを教えてください。")
             if mood:
-                st.write(f"解析された気分: {mood}")
+                st.write(f"次回オススメの場所: {mood}")
 
                 recommended_sauna = recommend_sauna(saunas, mood)
                 if recommended_sauna:
-                    st.write(f"あなたにオススメのサウナは: **{recommended_sauna['name']}**")
+                    st.write(f"今回あなたにオススメのサウナは: **{recommended_sauna['name']}**")
                     st.write(f"住所: {recommended_sauna['vicinity']}")
                     if 'rating' in recommended_sauna:
                         st.write(f"評価: {recommended_sauna['rating']}")
